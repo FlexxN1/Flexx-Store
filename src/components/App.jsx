@@ -1,7 +1,6 @@
 import React from 'react';
 
-const App = () => {
-    return <h1>hola estoy renderizado</h1>
-} 
-
+const App = () => (
+    <h1>hola</h1>
+)
 export { App };
