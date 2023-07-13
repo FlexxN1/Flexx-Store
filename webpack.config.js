@@ -1,21 +1,23 @@
 const path = require('path');
-const HtmlWebackPlugin = requiere('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
     entry: './src/index.js',
-    output: {
+    output:{
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
-    resolve: {
-        extensions: ['.js', '.jsx']
+    mode:'development',
+    resolve:{
+        extensions: ['.js','.jsx']
     },
-    module: {
-        rules: [
+    module:{
+        rules:[
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: {
+                use:{
                     loader: 'babel-loader'
                 }
             },
@@ -29,15 +31,15 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new HtmlWebackPlugin({
-            template: './public/index.html',
-            filename: './index.html'
-        }),
+    plugins:[
+        new HtmlWebpackPlugin({
+            template:'./public/index.html',
+            filename:'./index.html'
+        })
     ],
-    devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+    devServer:{
+        allowedHosts:path.join(__dirname,'dist'),
         compress: true,
-        port: 3005,
+        port: 3005
     }
 }
