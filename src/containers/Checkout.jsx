@@ -12,7 +12,9 @@ return (
             <h4>ITEM name</h4>
             <span>$10</span>
           </div>
-          <button type="button">Eliminar</button>
+          <button type="button">
+            <i className="fas fa-trash-alt" title="Eliminar"/>
+          </button>
         </div>
       </div>
       <div className="Checkout-sidebar">

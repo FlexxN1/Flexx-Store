@@ -11,7 +11,9 @@ function Header () {
                 </Link>
             </h1>
             <div className="Header-checkout">
-                <Link to='/checkout'>Checkout</Link>
+                <Link to='/checkout'>
+                    <i className="fas fa-shopping-basket fa-2x" title="Checkout"/>
+                </Link>
             </div>
         </div>
     );
