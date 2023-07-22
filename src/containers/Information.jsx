@@ -42,14 +42,14 @@ return (
         <div className="Information-form">
           <form ref={form}>
             <input type="text" placeholder="Nombre completo" name="name" />
-            <input type="text" placeholder="Correo Electronico" name="email" />
+            <input type="email" placeholder="Correo Electronico" name="email" />
             <input type="text" placeholder="Direccion" name="addres" />
             <input type="text" placeholder="apto" name="apto" />
             <input type="text" placeholder="Ciudad" name="city" />
             <input type="text" placeholder="Pais" name="country" />
             <input type="text" placeholder="Estado" name="state" />
             <input type="text" placeholder="Codigo postal" name="cp" />
-            <input type="text" placeholder="Telefono" name="phone" />
+            <input type='number' placeholder="Telefono" name="phone" />
           </form>
         </div>
         <div className="Information-buttons">

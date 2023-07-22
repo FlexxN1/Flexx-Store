@@ -32,7 +32,7 @@ function  Payment(){
       console.log(data);
       if (data.status === 'COMPLETED') {
         const newOrder = {
-          buyer,
+          buyer: buyer,
           product: cart,
           payment: data
         }
