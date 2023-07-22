@@ -8,6 +8,7 @@ import '../styles/components/Payment.css'
 function  Payment(){
   const { state: { cart }, buyer, addNewOrder } = useContext(AppContext);
 
+  const history = useHistory();
   
   const paypalOtions = {
     clientId: process.env.REACT_APP_CLIENT_ID,
@@ -20,24 +21,42 @@ function  Payment(){
     shape: 'rect'
   }
 
-  const handlePaymentSuccess = (data) => {
-    console.log(data);
-    if (data.status === 'COMPLETED') {
-      const newOrder = {
-        buyer,
-        product: cart,
-        payment: data
-      }
-      addNewOrder(newOrder);
-      useHistory.push('/checkout/success')
-    }
-  }
-
+  
   const handleSumTotal = () => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
     const sum = cart.reduce(reducer, 0);
     return sum;
   }
+
+    const handlePaymentSuccess = (data) => {
+      console.log(data);
+      if (data.status === 'COMPLETED') {
+        const newOrder = {
+          buyer,
+          product: cart,
+          payment: data
+        }
+        addNewOrder(newOrder);
+        history.push('/checkout/success')
+      }
+    }
+  
+    const createOrder = (data, actions) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: handleSumTotal()
+              },
+            },
+          ],
+        });
+      };
+      const onApprove = (data, actions) => {
+        return actions.order.capture().then(function(data) {
+        handlePaymentSuccess(data);
+               });
+      };
 
 
   return (
@@ -60,9 +79,9 @@ function  Payment(){
           <PayPalButton
             paypalOptions={paypalOtions}
             buttonStyles={buttonStyles}
-            amount={handleSumTotal()}
-            onSuccess={data => handlePaymentSuccess(data)}
-            onError={error => console.log(error)}
+            createOrder={(data, actions) => createOrder(data, actions)}
+            onApprove={(data, actions) => onApprove(data, actions)}
+            onError={(error) => console.log(error)}
             onCancel={data => console.log(data)}
           />
         </div>
