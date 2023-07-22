@@ -46,8 +46,14 @@ function  Payment(){
         <h3>Resumen del pedido:</h3>
         {cart.map(item => (
           <div className='Payment-item' key={uuidv4()}>
-            <h4>{item.title}</h4>
-            <spam>{item.price}</spam>
+            <div className="Payment-element">
+              <h4>{item.title}</h4>
+              <span>
+                $
+                {' '}
+                {item.price}
+              </span>
+            </div>
           </div>
         ))}
         <div className="Payment-button">
@@ -55,10 +61,9 @@ function  Payment(){
             paypalOptions={paypalOtions}
             buttonStyles={buttonStyles}
             amount={handleSumTotal()}
-            onPaymentStart={() => console.log('Start Payment')}
-            onPaymentSuccess={data => handlePaymentSuccess(data)}
-            onPaymentError={error => console.log(error)}
-            onPaymentCancel={data => console.log(data)}
+            onSuccess={data => handlePaymentSuccess(data)}
+            onError={error => console.log(error)}
+            onCancel={data => console.log(data)}
           />
         </div>
       </div>
