@@ -10,7 +10,7 @@ function  Payment(){
 
   
   const paypalOtions = {
-    clientId: 'ATN4MgsCVKSXinkSTL1YqlANTikW5fXyo5C7TkyVUG7JB0DTr1G2aabkWFF9Uz6kKo61tL48cfWpomc4',
+    clientId: 'AYFUDr3dpAuX3JO5mK4a54hXQAjYFfKcUDwmAwuC0b3sPG5dj1K8RWWqjDodzY_UyewhINDP_kwMmKIZ',
     intent: 'capture',
     currency: 'USD'
   }
