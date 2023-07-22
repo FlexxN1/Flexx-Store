@@ -43,7 +43,7 @@ return (
           <form ref={form}>
             <input type="text" placeholder="Nombre completo" name="name" />
             <input type="email" placeholder="Correo Electronico" name="email" />
-            <input type="text" placeholder="Direccion" name="addres" />
+            <input type="text" placeholder="Direccion" name="address" />
             <input type="text" placeholder="apto" name="apto" />
             <input type="text" placeholder="Ciudad" name="city" />
             <input type="text" placeholder="Pais" name="country" />
