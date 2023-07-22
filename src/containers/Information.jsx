@@ -69,7 +69,7 @@ return (
           <div className="Information-item" key={item.title}>
             <div className="Information-element">
               <h4>{item.title}</h4>
-              <span>$ ${item.price}</span>
+              <span>${item.price}</span>
             </div>
           </div>
         ))}
