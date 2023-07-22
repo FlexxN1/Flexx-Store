@@ -10,7 +10,7 @@ function  Payment(){
 
   
   const paypalOtions = {
-    clientId: 'AYFUDr3dpAuX3JO5mK4a54hXQAjYFfKcUDwmAwuC0b3sPG5dj1K8RWWqjDodzY_UyewhINDP_kwMmKIZ',
+    clientId: process.env.REACT_APP_CLIENT_ID,
     intent: 'capture',
     currency: 'USD'
   }
