@@ -1,4 +1,4 @@
-import React, {useRef, useContext} from 'react'
+import React, {useRef, useContext, useState} from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import '../styles/components/Information.css'
@@ -7,6 +7,12 @@ function Information() {
   const {state: { cart }, addToBuyer } = useContext(AppContext)
   const form = useRef(null);
   const history = useHistory();
+  const [error, setError] = useState(false)
+  const [errorEmail, setEmail] = useState(false)
+  const [errorAdress, setAddress] = useState(false)
+  const [errorPhone, setPhone] = useState(false)
+
+
   
   const handleSubmit = () => {
     const formData = new FormData(form.current);
@@ -22,7 +28,24 @@ function Information() {
       'phone': formData.get('phone'),
 
     }
-    
+
+    if(buyer.name === ''){
+      setError(true)
+      return
+    } 
+    if(buyer.email === ''){
+      setEmail(true)
+      return
+    }
+    if(buyer.address === ''){
+      setAddress(true)
+      return
+    }
+    if(buyer.phone === ''){
+        setPhone(true)
+        return
+    }
+
     addToBuyer(buyer);
     history.push('/checkout/payment')
   }
@@ -42,14 +65,18 @@ return (
         <div className="Information-form">
           <form ref={form}>
             <input type="text" placeholder="Nombre completo" name="name" />
+            <span>{error && <p>Ingresa un nombre porfavor</p>}</span>
             <input type="email" placeholder="Correo Electronico" name="email" />
+            <span>{errorEmail && <p>ingresa un email porfavor</p>}</span>
             <input type="text" placeholder="Direccion" name="address" />
+            <span>{errorAdress && <p>Ingresa una direccion porfavor</p>}</span>
             <input type="text" placeholder="apto" name="apto" />
             <input type="text" placeholder="Ciudad" name="city" />
             <input type="text" placeholder="Pais" name="country" />
             <input type="text" placeholder="Estado" name="state" />
             <input type="text" placeholder="Codigo postal" name="cp" />
             <input type='number' placeholder="Telefono" name="phone" />
+            <span>{errorPhone && <p>Ingresa un numero porfavor</p>}</span>
           </form>
         </div>
         <div className="Information-buttons">
