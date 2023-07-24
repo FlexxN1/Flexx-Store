@@ -1,6 +1,6 @@
-# Flexx Commerce 🛒🛍
+# Flexx Store 🛒🛍
 
-Flexx Store, es una pagina SPA, contruida en React, con el objetivo de simular una e-commerce, implementando interfaces, consumo de APIS como la de Paypal para pagos y Google Maps.
+Flexx Store, es una SPA, contruida en React, con el objetivo de simular una e-commerce, implementando interfaces, consumo de APIS como la de Paypal para pagos y Google Maps, esta implementado despligue automatizado CI/CD.
 
 Recursos :
 
@@ -13,7 +13,7 @@ Recursos :
 - [GitHub-Actions for Firebase](https://github.com/w9jds/firebase-action)
 
 ## View project 🚀🙋🏻‍♂️
-## [Deploy](https://flexx-e-commerce.netlify.app/)
+## [Deploy](https://flexx-store.web.app/)
 
 ## Installation ⚖
 Clone Flexx-Store:
