@@ -52,7 +52,7 @@ module.exports = {
       filename: 'assets/[name].css',
     }),
     new DotenvWebpackPlugin(),
-    new webpack.DelegatedPlugin({
+    new webpack.DefinePlugin({
       'process.env': {
         REACT_APP_CLIENT_ID: JSON.stringify(process.env.REACT_APP_CLIENT_ID),
         APY_KEY_GOOGLE_MAPS: JSON.stringify(process.env.APY_KEY_GOOGLE_MAPS),
