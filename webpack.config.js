@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -51,6 +52,12 @@ module.exports = {
       filename: 'assets/[name].css',
     }),
     new DotenvWebpackPlugin(),
+    new webpack.DelegatedPlugin({
+      'process.env': {
+        REACT_APP_CLIENT_ID: JSON.stringify(process.env.REACT_APP_CLIENT_ID),
+        APY_KEY_GOOGLE_MAPS: JSON.stringify(process.env.APY_KEY_GOOGLE_MAPS),
+      }
+    })
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
