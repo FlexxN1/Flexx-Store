@@ -1,0 +1,40 @@
+name: Build and Deploy
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@main
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+        env: 
+          APY_KEY_GOOGLE_MAPS: ${{ secrets.APY_KEY_GOOGLE_MAPS }}
+          REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@main
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
