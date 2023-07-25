@@ -12,6 +12,10 @@ Recursos :
 
 - [GitHub-Actions for Firebase](https://github.com/w9jds/firebase-action)
 
+- [Font-Awesome](https://fontawesome.com/)
+
+- [DontENV](https://www.npmjs.com/package/dotenv)
+
 ## View project 🚀🙋🏻‍♂️
 ## [Deploy](https://flexx-store.web.app/)
 
