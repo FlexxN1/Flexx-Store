@@ -14,7 +14,7 @@ Recursos :
 
 - [Font-Awesome](https://fontawesome.com/)
 
-- [DontENV](https://www.npmjs.com/package/dotenv)
+- [DotENV](https://www.npmjs.com/package/dotenv)
 
 ## View project 🚀🙋🏻‍♂️
 ## [Deploy](https://flexx-store.web.app/)
