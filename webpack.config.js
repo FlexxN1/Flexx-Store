@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const DotenvWebpackPlugin = require('dotenv-webpack');
-const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -51,13 +51,19 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-    new DotenvWebpackPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        REACT_APP_CLIENT_ID: JSON.stringify(process.env.REACT_APP_CLIENT_ID),
-        APY_KEY_GOOGLE_MAPS: JSON.stringify(process.env.APY_KEY_GOOGLE_MAPS),
-      }
-    })
+    new CopyPlugin({
+      patterns: [
+        { from: 'public/manifest.json', to: '' },
+        { from: 'public/service-worker.js', to: '' },
+        { from: 'public/icon.png', to: 'assets' },
+      ],
+    }),
+    new Dotenv({
+			path: './.env',
+			safe: true,
+			systemvars: true,
+			defaults: false,
+		}),
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),

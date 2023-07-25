@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flexx Store</title>
     <link rel="icon" type="image/x-icon" href="/images/OIP.png">
+    <link rel=“manifest” href="./manifest.json">
     <script src="https://kit.fontawesome.com/fc06c107de.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app"></div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+            navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                console.log('ServiceWorker registration failed: ', err);
+            }).catch(function (err) {
+                console.log(err)
+            });
+            });
+        } else {
+            console.log('service worker is not supported');
+        }
+    </script>
 </body>
 </html>

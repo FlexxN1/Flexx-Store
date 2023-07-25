@@ -16,6 +16,8 @@ Recursos :
 
 - [DotENV](https://www.npmjs.com/package/dotenv)
 
+- [uuID](https://www.npmjs.com/package/uuid)
+
 ## View project 🚀🙋🏻‍♂️
 ## [Deploy](https://flexx-store.web.app/)
 

@@ -1,62 +1,61 @@
-import React, {useRef, useContext, useState} from 'react'
+import React, { useRef, useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import '../styles/components/Information.css'
+import '../styles/components/Information.css';
 
 function Information() {
-  const {state: { cart }, addToBuyer } = useContext(AppContext)
+  const {
+    state: { cart },
+    addToBuyer,
+  } = useContext(AppContext);
   const form = useRef(null);
   const history = useHistory();
-  const [error, setError] = useState(false)
-  const [errorEmail, setEmail] = useState(false)
-  const [errorAdress, setAddress] = useState(false)
-  const [errorPhone, setPhone] = useState(false)
+  const [error, setError] = useState(false);
+  const [errorEmail, setEmail] = useState(false);
+  const [errorAdress, setAddress] = useState(false);
+  const [errorPhone, setPhone] = useState(false);
 
-
-  
   const handleSubmit = () => {
     const formData = new FormData(form.current);
     const buyer = {
-      'name': formData.get('name'),
-      'email': formData.get('email'),
-      'address': formData.get('address'),
-      'apto': formData.get('apto'),
-      'city': formData.get('city'),
-      'country': formData.get('country'),
-      'state': formData.get('state'),
-      'cp': formData.get('cp'),
-      'phone': formData.get('phone'),
+      name: formData.get('name'),
+      email: formData.get('email'),
+      address: formData.get('address'),
+      apto: formData.get('apto'),
+      city: formData.get('city'),
+      country: formData.get('country'),
+      state: formData.get('state'),
+      cp: formData.get('cp'),
+      phone: formData.get('phone'),
+    };
 
+    if (buyer.name === '') {
+      setError(true);
+      return;
     }
-
-    if(buyer.name === ''){
-      setError(true)
-      return
-    } 
-    if(buyer.email === ''){
-      setEmail(true)
-      return
+    if (buyer.email === '') {
+      setEmail(true);
+      return;
     }
-    if(buyer.address === ''){
-      setAddress(true)
-      return
+    if (buyer.address === '') {
+      setAddress(true);
+      return;
     }
-    if(buyer.phone === ''){
-        setPhone(true)
-        return
+    if (buyer.phone === '') {
+      setPhone(true);
+      return;
     }
 
     addToBuyer(buyer);
-    history.push('/checkout/payment')
-  }
-  
-  
+    history.push('/checkout/payment');
+  };
+
   /*otra forma de leer todos los resultados sin harcordear todo los valores es asi
         //const buyer = Object.fromEntries(formData);
         // console.log(buyer);
   */
 
-return (
+  return (
     <div className="Information">
       <div className="Information-content">
         <div className="Information-head">
@@ -75,18 +74,18 @@ return (
             <input type="text" placeholder="Pais" name="country" />
             <input type="text" placeholder="Estado" name="state" />
             <input type="text" placeholder="Codigo postal" name="cp" />
-            <input type='number' placeholder="Telefono" name="phone" />
+            <input type="number" placeholder="Telefono" name="phone" />
             <span>{errorPhone && <p>Ingresa un numero porfavor</p>}</span>
           </form>
         </div>
         <div className="Information-buttons">
           <div className="Information-back">
-            <Link to='/checkout'>
-              Regresar
-            </Link>
+            <Link to="/checkout">Regresar</Link>
           </div>
           <div className="Information-next">
-            <button type='button' onClick={handleSubmit}>Pagar</button>
+            <button type="button" onClick={handleSubmit}>
+              Pagar
+            </button>
           </div>
         </div>
       </div>
@@ -100,7 +99,6 @@ return (
             </div>
           </div>
         ))}
-
       </div>
     </div>
   );

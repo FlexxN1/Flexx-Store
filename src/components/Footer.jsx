@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/components/Footer.css'
+import '../styles/components/Footer.css';
 
-function Footer (){
+function Footer() {
   return (
     <div className="Footer">
       <p className="Footer-title">Flexx Store</p>
