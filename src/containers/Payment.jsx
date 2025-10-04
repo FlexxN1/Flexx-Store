@@ -15,7 +15,6 @@ function Payment() {
   const history = useHistory();
 
   const paypalOtions = {
-    clientId: process.env.REACT_APP_CLIENT_ID,
     intent: 'capture',
     currency: 'USD',
   };
